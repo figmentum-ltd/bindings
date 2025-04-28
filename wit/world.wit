@@ -1,6 +1,35 @@
 package component:bindings;
 
-/// An example world for the component to target.
 world guest {
-    export hello: func() -> string;
+    use storage.{byte-array};
+
+    record event {
+        id: string,
+        content: byte-array,
+    }
+
+    // Host-provided functionality
+    import storage;
+    import time; 
+    
+    // Component API
+    export execute: func(cmd: byte-array) -> result<list<event>, byte-array>;
+    export query: func(req: byte-array) -> result<byte-array, byte-array>;
+}
+
+interface storage {
+    type byte-array = list<u8>;
+    
+    persist: func(key: string, value: byte-array);
+    retrieve: func(key: string) -> option<byte-array>;
+    /// `start` & `end` -> write open range
+    retrieve-range: func(start: string, end: string) -> list<byte-array>;
+}
+
+interface time {
+    record clock {
+        timestamp: u64,
+    }
+
+    now: func() -> clock;
 }
