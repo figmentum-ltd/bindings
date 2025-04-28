@@ -1,0 +1,6 @@
+package component:bindings;
+
+/// An example world for the component to target.
+world guest {
+    export hello: func() -> string;
+}
