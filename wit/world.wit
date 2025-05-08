@@ -20,7 +20,8 @@ world guest {
 interface storage {
     type byte-array = list<u8>;
     
-    persist: func(key: string, value: byte-array);
+    /// If the key exists -> returns the old value
+    persist: func(key: string, value: byte-array) -> option<byte-array>;
     retrieve: func(key: string) -> option<byte-array>;
     /// `start` & `end` -> write open range
     retrieve-range: func(start: string, end: string) -> list<byte-array>;
