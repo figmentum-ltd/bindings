@@ -13,7 +13,7 @@ Once a component is created using these bindings, it can be called from the `Pla
 3. Add this repository as a dependency in your `Cargo.toml` file under `[dependencies]`.
     ```toml
     [dependencies]
-    bindings = { version = "0.x", git = "https://github.com/figmentum-ltd/bindings.git" }
+    bindings = { version = "0.x", git = "https://github.com/figmentum-ltd/bindings.git", features = ["guest"] }
     ```
     > Note: Remove other dependencies added by `cargo component new` command such as `wasm-bindgen-rt`.
 
