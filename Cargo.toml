@@ -1,11 +1,18 @@
 [package]
 name = "bindings"
-version = "0.2.0"
+version = "0.2.1"
 edition = "2024"
 
 [dependencies]
-wasmtime = { version = "32", default-features = false, features = ["runtime", "component-model"]}
+wasmtime = { version = "32", default-features = false, features = [
+    "runtime",
+    "component-model",
+] }
 wit-bindgen = { version = "0.42", default-features = false, features = [
     "macros",
 ] }
 wit-bindgen-rt = { version = "0.42", default-features = false }
+
+[features]
+guest = []
+host = []
